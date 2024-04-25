@@ -15,6 +15,9 @@ function TransactionsList() {
     return "";
   }
 
+  const length = Object.keys(filter).length;
+  console.log(Object.keys(filter));
+  console.log(filter);
   return (
     <>
       <section>
@@ -36,6 +39,14 @@ function TransactionsList() {
               }}
             >
               <span>Filter</span>
+              {!!length && (
+                <span
+                  className="bg-black-300 rounded-full text-white text-xs leading-3 font-medium flex items-center justify-center"
+                  style={{ width: "1.25rem", height: "1.25rem" }}
+                >
+                  {length}
+                </span>
+              )}
               {arrowdown}
             </div>
             <div
@@ -86,7 +97,7 @@ function TransactionsList() {
         </div>
       </section>
       <ModalPreview isOpen={showFiter} onClose={() => setShowFilter(false)}>
-        <Filter filter={filter} setFilter={setFilter} />
+        <Filter filter={filter} setFilter={setFilter} onClose={() => setShowFilter(false)} />
       </ModalPreview>
     </>
   );

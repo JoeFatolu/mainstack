@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import "./calender.css";
+import "react-datepicker/dist/react-datepicker.css";
 import NavBar from "@/components/header";
 import QueryClientProvider from "./QueryClientProvider";
 import { AuthProvider } from "./auth/Provider";
+import { Sidebar } from "@/components/sidebar";
 const font = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -28,6 +31,7 @@ export default function RootLayout({
             <main className="p-2">{children}</main>
           </AuthProvider>
         </QueryClientProvider>
+        <Sidebar />
       </body>
     </html>
   );

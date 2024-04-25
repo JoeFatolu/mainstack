@@ -16,6 +16,17 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = ({ value, setValue, options, label }) => {
   const [visible, setVisible] = useState(false);
 
+  const handleCheckboxChange = (x: { label: string; value: string; key: number }) => {
+    const index = value.findIndex((item) => item.value === x.value);
+    if (index !== -1) {
+      const newValue = [...value];
+      newValue.splice(index, 1);
+      setValue(newValue);
+    } else {
+      setValue([...value, x].sort((a, b) => a.key - b.key));
+    }
+  };
+
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
       <div className="mb-6 relative">
@@ -51,7 +62,7 @@ const Dropdown: React.FC<DropdownProps> = ({ value, setValue, options, label }) 
                 value={!!value.find((i) => i.value == x.value)}
                 content={x.label}
                 onChange={() => {
-                  setValue([...value, x].sort((a, b) => a.key - b.key));
+                  handleCheckboxChange(x);
                 }}
               />
             ))}

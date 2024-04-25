@@ -44,6 +44,12 @@ body main {
   margin: auto;
 }
 
+body > section {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
 .modal {
   animation: showModal 0.4s forwards;
 }

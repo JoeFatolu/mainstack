@@ -43,7 +43,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   if (isSuccess) {
-    return <AuthContext.Provider value={value} children={children} />; // Pass children prop
+    return <AuthContext.Provider value={value} children={children} />;
   }
 
   throw new Error(`Unhandled status: ${status}`);
